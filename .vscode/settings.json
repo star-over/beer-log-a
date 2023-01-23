@@ -1,0 +1,36 @@
+{
+  "cSpell.ignoreWords": [
+    "Ubtrb",
+    "conv",
+    "okaidia",
+    "ponicode",
+    "prismjs",
+    "Consolas",
+    "paren"
+  ],
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "$(capture).js, $(capture).*.ts",
+    "*.js": "$(capture).js.map, $(capture).min.js, $(capture).d.ts",
+    "*.jsx": "$(capture).js",
+    "*.tsx": "$(capture).ts",
+    "package.json": ".*, package-lock.json, tsconfig.json, vite.config.js, tailwind.config.cjs, postcss.config.cjs"
+  },
+  "cSpell.ignorePaths": [
+    "package-lock.json",
+    "package.json",
+    "node_modules",
+    "vscode-extension",
+    ".git/objects",
+    ".vscode",
+    ".vscode-insiders"
+  ],
+  // "cSpell.diagnosticLevel": "Hint",
+  "cSpell.spellCheckOnlyWorkspaceFiles": true,
+  "cSpell.words": [
+    "Bearloga",
+    "Beerloga"
+  ]
+}
