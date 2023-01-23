@@ -1,5 +1,7 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
+export const useTheme = makeQueryState(["theme"]);
+
 function makeQueryState(queryKey) {
   return (initialData) => {
     const result = useQuery({
@@ -14,5 +16,3 @@ function makeQueryState(queryKey) {
     return [result, setFn];
   };
 }
-
-export const useTheme = makeQueryState(["theme"]);

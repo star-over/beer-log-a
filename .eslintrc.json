@@ -38,6 +38,7 @@
       "key-spacing":"warn",
       "space-infix-ops":"warn",
 
+      "no-use-before-define": ["error", { "functions": false }],
       "arrow-body-style":"off",
       "import/prefer-default-export": "off",
       "no-shadow":"off",
