@@ -1,18 +1,18 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
-const themeKeys = { all: ["theme"] };
+function makeQueryState(queryKey) {
+  return (initialData) => {
+    const result = useQuery({
+      queryKey,
+      initialData,
+      staleTime: Infinity,
+      cacheTime: Infinity,
+      enabled: false,
+    });
+    const setFn = (updater) => useQueryClient().setQueryData(queryKey, updater);
 
-export function useTheme() {
-  return useQuery({
-    queryKey: themeKeys.all,
-    staleTime: Infinity,
-    cacheTime: Infinity,
-    enabled: false,
-    initialData: "dark",
-    queryFn: null,
-  });
+    return [result, setFn];
+  };
 }
 
-export function setTheme(theme) {
-  useQueryClient().setQueryData(themeKeys.all, theme);
-}
+export const useTheme = makeQueryState(["theme"]);

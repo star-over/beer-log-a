@@ -36,6 +36,7 @@
       "max-len":"warn",
       "comma-spacing":"warn",
       "key-spacing":"warn",
+      "space-infix-ops":"warn",
 
       "arrow-body-style":"off",
       "import/prefer-default-export": "off",

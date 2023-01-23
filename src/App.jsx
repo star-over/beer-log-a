@@ -1,10 +1,16 @@
+/* eslint-disable no-console */
+/* eslint-disable no-multiple-empty-lines */
+/* eslint-disable no-trailing-spaces */
 import { useBeer, useBeers } from "./store/beerApi";
-import { useTheme, setTheme } from "./store/themeApi";
+import { useTheme } from "./store/themeApi";
 
 function App() {
   const beers = useBeers();
   const beer2 = useBeer(6);
-  const theme = useTheme();
+
+
+
+  const [theme, setTheme] = useTheme("dark");
 
   console.log("🚀 >>>", theme.data);
   setTheme("light");
