@@ -1,15 +1,8 @@
 import { useBeer, useBeers } from "./store/beerApi";
-import { useTheme } from "./store/themeApi";
 
 function App() {
   const beers = useBeers();
   const beer2 = useBeer(6);
-
-  const [theme, setTheme] = useTheme("dark");
-
-  console.log("🚀 >>>", theme.data);
-  setTheme("light");
-  console.log("🚀 >>>", theme.data);
 
   if (beers.isLoading) return "Loading...";
   if (beers.error) return `An error has occurred: ${beers.error.message}`;
