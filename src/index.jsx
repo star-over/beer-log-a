@@ -1,6 +1,6 @@
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import App from "./pages/App";
 import "./index.css";
 import QueryProvider from "./store/QueryProvider";
 
