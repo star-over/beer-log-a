@@ -5,7 +5,7 @@ import { MoreButton } from "./MoreButton";
 
 export function BeerList() {
   const beers = useInfiniteBeers();
-  // console.log("🚀 > App > beers", beers);
+  console.log("🚀 > App > beers", beers);
 
   if (beers.isLoading) return "Loading...";
   if (beers.error) return `An error has occurred: ${beers.error.message}`;

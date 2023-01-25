@@ -44,6 +44,8 @@
       "react/jsx-tag-spacing":"warn",
       "prefer-const":"warn",
 
+      "react/no-array-index-key":"off",
+      "react/jsx-one-expression-per-line": "off",
       "no-use-before-define": ["error", { "functions": false }],
       "arrow-body-style":"off",
       "import/prefer-default-export": "off",

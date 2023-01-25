@@ -17,7 +17,7 @@ const beerKeys = {
 };
 
 export function useInfiniteBeers() {
-  const perPage = 3;
+  const perPage = 4;
   const params = {
     // abv_gt: 12,
     per_page: perPage,
