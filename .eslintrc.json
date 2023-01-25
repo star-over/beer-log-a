@@ -39,6 +39,10 @@
       "space-infix-ops":"warn",
       "indent":"warn",
       "block-spacing":"warn",
+      "space-in-parens": "warn",
+      "arrow-parens":"warn",
+      "react/jsx-tag-spacing":"warn",
+      "prefer-const":"warn",
 
       "no-use-before-define": ["error", { "functions": false }],
       "arrow-body-style":"off",
