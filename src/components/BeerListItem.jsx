@@ -21,7 +21,7 @@ export function BeerListItem({ beer }) {
               <h4 className="text text-slate-600 font-bold">{beer.name}</h4>
               <p className="text-sm text-slate-500 italic">{beer.tagline}</p>
             </div>
-            <FavoriteButton />
+            <FavoriteButton beerId={beer.id} />
           </div>
 
           {/* attributes */}

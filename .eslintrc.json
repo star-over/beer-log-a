@@ -43,6 +43,7 @@
       "arrow-parens":"warn",
       "react/jsx-tag-spacing":"warn",
       "prefer-const":"warn",
+      "arrow-spacing":"warn",
 
       "react/no-array-index-key":"off",
       "react/jsx-one-expression-per-line": "off",
