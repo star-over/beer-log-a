@@ -21,7 +21,7 @@ function makeQueryState(queryKey, initialData) {
   };
 }
 
-export const useFavorites = () => {
+export const useFavorites = (targetId) => {
   const queryKey = ["favorites"];
   const initialData = [1, 3, 5];
   const queryClient = useQueryClient();
@@ -34,10 +34,10 @@ export const useFavorites = () => {
     enabled: false,
   });
 
-  const isFavorite = (targetId) => data.includes(targetId);
+  const isFavorite = data.includes(targetId);
 
-  const toggleFavorite = (targetId) => {
-    const result = isFavorite(targetId)
+  const toggleFavorite = () => {
+    const result = isFavorite
       ? data.filter((id) => id !== targetId)
       : [...data, targetId];
     queryClient.setQueryData(queryKey, result);
