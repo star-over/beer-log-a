@@ -1,8 +1,9 @@
+import { FavoriteButton } from "./FavoriteButton";
 import { LongString } from "./LongString";
 
 export function BeerListItem({ beer }) {
   return (
-    <li className="overflow-hidden bg-white py-4 pr-4 shadow rounded">
+    <li className="overflow-hidden min-w-max bg-white py-4 pr-4 shadow rounded">
       <div className="flex items-center">
 
         {/* image */}
@@ -10,10 +11,16 @@ export function BeerListItem({ beer }) {
           <img className="h-24 mx-auto hover:scale-150 transition-transform" src={beer.image_url} alt={`Beer ${beer.name}`} />
         </div>
 
-        {/* title */}
-        <div className="max-w-lg">
-          <h4 className="text text-slate-600 font-bold">{beer.name}</h4>
-          <p className="text-sm text-slate-500 font-bold">{beer.tagline}</p>
+        <div className="max-w-lg grow">
+
+          <div className="flex justify-between items-start">
+            {/* title */}
+            <div>
+              <h4 className="text text-slate-600 font-bold">{beer.name}</h4>
+              <p className="text-sm text-slate-500 italic">{beer.tagline}</p>
+            </div>
+            <FavoriteButton />
+          </div>
 
           {/* attributes */}
           <p className="mt-2 text-sm text-slate-600 font-normal flex justify-start gap-2">
@@ -24,7 +31,7 @@ export function BeerListItem({ beer }) {
           </p>
 
           {/* description */}
-          <div className="mt-1 text-sm text-slate-600 font-normal">
+          <div className="mt-1 text-sm text-slate-600 font-normal leading-4">
             <LongString content={beer.description} />
           </div>
 

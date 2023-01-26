@@ -6,17 +6,16 @@ import { useInfiniteBeers } from "../store/beerApi";
 
 function App() {
   const beers = useInfiniteBeers();
-  // console.log("🚀 > App > beers", beers);
 
   if (beers.isLoading) return "Loading...";
   if (beers.error) return `An error has occurred: ${beers.error.message}`;
 
   return (
     <>
+      <GlobalUpdateNotification />
       <Header />
       <ContainerLayout>
         <BeerList />
-        <GlobalUpdateNotification />
       </ContainerLayout>
     </>
 

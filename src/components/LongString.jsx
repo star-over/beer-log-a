@@ -28,7 +28,7 @@ export function LongString({ content }) {
       {isOverflowing
         ? (
           <button
-            className="underline text-sm"
+            className="underline"
             type="button"
             onClick={handleElapses}
           >...
