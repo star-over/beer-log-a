@@ -1,4 +1,5 @@
 const maping = {
+  // colors source https://brookstonbeerbulletin.com/thinking-about-beer-color/
   0: { bg: "#ffffff", text: "#000000" },
   0.5: { bg: "#fbf0cb", text: "#000000" },
   1: { bg: "#f7e1a1", text: "#000000" },
