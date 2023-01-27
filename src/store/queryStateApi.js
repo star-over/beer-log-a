@@ -1,7 +1,7 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useTheme = makeQueryState(["theme"], "dark");
-export const useFilter = makeQueryState(["filter"], {});
+export const useFilterFavorites = makeQueryState(["formFavorites"], false);
 
 function makeQueryState(queryKey, initialData) {
   return () => {
@@ -54,8 +54,11 @@ const filterKeys = {
 export function useFilters() {
   const queryKey = ["filters"];
   const beerName = "beer_name";
+  const ids = "ids";
   const initialData = {};
   const queryClient = useQueryClient();
+  const { data: favoriteIds } = useFavorites(1);
+  console.log("🚀 > useFilters > favoriteIds", favoriteIds);
 
   const { data } = useQuery({
     queryKey,
@@ -66,11 +69,21 @@ export function useFilters() {
     enabled: false,
   });
 
-  const getfilterName = () => {
+  const getFilterFavorites = () => {
+    return Boolean(data[ids]);
+  };
+
+  const setFilterFavorites = () => {
+    const result = (getFilterFavorites() || favoriteIds.length === 0)
+      ? {}
+      : { ids: favoriteIds.join("|") };
+    queryClient.setQueryData(queryKey, result);
+  };
+
+  const getFilterName = () => {
     if (!data[beerName]) return "";
     return data[beerName];
   };
-
   const setFilterName = (value) => {
     const result = (value)
       ? { ...data, [beerName]: value }
@@ -79,5 +92,11 @@ export function useFilters() {
   };
 
   const getFilterObject = () => data;
-  return { getfilterName, setFilterName, getFilterObject };
+  return {
+    getFilterName,
+    setFilterName,
+    getFilterObject,
+    getFilterFavorites,
+    setFilterFavorites
+  };
 }

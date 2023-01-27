@@ -1,16 +1,12 @@
-import { useFilters } from "../store/queryStateApi";
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import { FilterFavorites } from "./FilterFavorites";
+import { FilterInput } from "./FilterInput";
 
 export function Filter() {
-  const { getfilterName, setFilterName } = useFilters();
-  console.log("🚀 > Filter > getfilterName", getfilterName());
-
   return (
     <form>
-      <input
-        type="text"
-        value={getfilterName()}
-        onChange={(e) => setFilterName(e.target.value)}
-      />
+      <FilterInput />
+      <FilterFavorites />
     </form>
   );
 }

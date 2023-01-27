@@ -1,3 +1,5 @@
+import React from "react";
+
 export function BeerListSkeleton() {
   const skeleton = (
     <li className="min-w-max bg-white p-4 shadow rounded">
@@ -53,7 +55,11 @@ export function BeerListSkeleton() {
   const cards = Array(3).fill(skeleton);
   return (
     <ul className="space-y-3 my-3">
-      {cards.map((card) => card)}
+      {cards.map((card, i) => (
+        <React.Fragment key={i}>
+          {card}
+        </React.Fragment>
+      ))}
     </ul>
   );
 }

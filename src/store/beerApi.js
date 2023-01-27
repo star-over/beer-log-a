@@ -31,7 +31,7 @@ export function useInfiniteBeers() {
       return res.data;
     },
     getNextPageParam: (lastPage, pages) => {
-      if (lastPage.length === 0) return undefined;
+      if (lastPage.length < perPage) return undefined;
       return pages.length + 1;
     },
   });

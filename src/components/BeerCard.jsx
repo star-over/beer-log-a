@@ -2,7 +2,7 @@ import { BeerColor } from "./BeerColor";
 import { FavoriteButton } from "./FavoriteButton";
 import { LongString } from "./LongString";
 
-export function BeerListItem({ beer }) {
+export function BeerCard({ beer }) {
   return (
     <li className="overflow-hidden min-w-max bg-white py-4 pr-4 shadow rounded">
       <div className="flex">

@@ -45,6 +45,7 @@
       "prefer-const":"warn",
       "arrow-spacing":"warn",
 
+      // "jsx-a11y/label-has-associated-control": "off",
       "react/no-array-index-key":"off",
       "react/jsx-one-expression-per-line": "off",
       "no-use-before-define": ["error", { "functions": false }],
