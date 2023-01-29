@@ -24,7 +24,6 @@ function makeQueryState(queryKey, initialData) {
     const { data } = useQuery({
       queryKey,
       queryFn: () => queryClient.getQueryData(queryKey),
-
       initialData,
       staleTime: Infinity,
       cacheTime: Infinity,
@@ -67,14 +66,13 @@ export function useFavorites(targetId) {
 const filterKeys = {
   all: ["filters"],
   name: () => [...filterKeys.all, "name"],
-  ids: () => [...filterKeys.all, "ids"],
+  checkedFav: () => [...filterKeys.all, "checkedFav"],
   abv: () => [...filterKeys.all, "abv"],
   srm: () => [...filterKeys.all, "srm"],
 };
 
 export function useFilters() {
-  const queryKey = ["filters"];
-  const ids = "ids";
+  const queryKey = filterKeys.all;
   const initialData = {};
   const queryClient = useQueryClient();
   const { data: favoriteIds } = useFavorites(1);
@@ -88,6 +86,22 @@ export function useFilters() {
     enabled: false,
   });
 
+  const defaultCheckedFav = false;
+  const [checkedFav, setCheckedFav] = makeQueryState(filterKeys.checkedFav(), false)();
+  const getFilterFavorites = () => checkedFav;
+  const setFilterFavorites = (value) => {
+    setCheckedFav(value);
+    const ids = "ids";
+    delete data[ids];
+
+    const result = (value && favoriteIds.length > 0)
+      ? { ...data, ids: favoriteIds.join("|") }
+      : data;
+
+    queryClient.setQueryData(queryKey, result);
+  };
+
+  const defaultName = "";
   const [name, setName] = makeQueryState(filterKeys.name(), "")();
   const getFilterName = () => name;
   const setFilterName = (value) => {
@@ -100,7 +114,8 @@ export function useFilters() {
     }
   };
 
-  const [abv, setAbv] = makeQueryState(filterKeys.abv(), Object.keys(abvVariants)[0])();
+  const defaultAdvKey = Object.keys(abvVariants)[0];
+  const [abv, setAbv] = makeQueryState(filterKeys.abv(), defaultAdvKey)();
   const getFilterAbv = () => abv;
   const setFilterAbv = (value) => {
     setAbv(value);
@@ -108,7 +123,7 @@ export function useFilters() {
     const ltParam = "abv_lt";
     delete data[gtParam];
     delete data[ltParam];
-    if (value !== "all") {
+    if (value !== defaultAdvKey) {
       const result = {
         ...data,
         [gtParam]: abvVariants[value].gt,
@@ -118,7 +133,8 @@ export function useFilters() {
     }
   };
 
-  const [srm, setSrm] = makeQueryState(filterKeys.srm(), Object.keys(srmVariants)[0])();
+  const defaultSrmKey = Object.keys(srmVariants)[0];
+  const [srm, setSrm] = makeQueryState(filterKeys.srm(), defaultSrmKey)();
   const getFilterSrm = () => srm;
   const setFilterSrm = (value) => {
     setSrm(value);
@@ -126,7 +142,7 @@ export function useFilters() {
     const ltParam = "ebc_lt";
     delete data[gtParam];
     delete data[ltParam];
-    if (value !== "all") {
+    if (value !== defaultSrmKey) {
       const result = {
         ...data,
         [gtParam]: srmVariants[value].gt,
@@ -136,30 +152,27 @@ export function useFilters() {
     }
   };
 
-  const getFilterFavorites = () => {
-    return Boolean(data[ids]);
+  const resetFilter = () => {
+    setFilterFavorites(defaultCheckedFav);
+    setFilterName(defaultName);
+    setFilterAbv(defaultAdvKey);
+    setFilterSrm(defaultSrmKey);
   };
-
-  const setFilterFavorites = () => {
-    const result = (getFilterFavorites() || favoriteIds.length === 0)
-      ? {}
-      : { ids: favoriteIds.join("|") };
-    queryClient.setQueryData(queryKey, result);
-  };
-
   const getFilterObject = () => data;
   return {
-    getFilterName,
-    setFilterName,
-    getFilterObject,
-
     getFilterFavorites,
     setFilterFavorites,
+
+    getFilterName,
+    setFilterName,
 
     getFilterAbv,
     setFilterAbv,
 
     getFilterSrm,
     setFilterSrm,
+
+    resetFilter,
+    getFilterObject,
   };
 }

@@ -7,8 +7,8 @@ function App() {
   return (
     <>
       <GlobalUpdateNotification />
-      <Header />
       <ContainerLayout>
+        <Header />
         <BeerList />
       </ContainerLayout>
     </>
