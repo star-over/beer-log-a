@@ -1,7 +1,22 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
-export const useTheme = makeQueryState(["theme"], "dark");
-export const useFilterFavorites = makeQueryState(["formFavorites"], false);
+export const abvVariants = {
+  all: { content: "All", gt: 0, lt: 9999 },
+  free: { content: "Free", gt: 0, lt: 1 },
+  low: { content: "Low", gt: 1, lt: 3 },
+  light: { content: "Light", gt: 3, lt: 4 },
+  regular: { content: "Regular", gt: 4, lt: 6 },
+  strong: { content: "Strong", gt: 6, lt: 10 },
+  extra: { content: "Extra", gt: 10, lt: 9999 }
+};
+
+export const srmVariants = {
+  all: { content: "All", gt: 0, lt: 9999 },
+  pale: { content: "Pale", gt: 0, lt: 10 },
+  amber: { content: "Amber", gt: 10, lt: 20 },
+  brown: { content: "Brown", gt: 20, lt: 50 },
+  dark: { content: "Dark", gt: 50, lt: 9999 },
+};
 
 function makeQueryState(queryKey, initialData) {
   return () => {
@@ -9,13 +24,16 @@ function makeQueryState(queryKey, initialData) {
     const { data } = useQuery({
       queryKey,
       queryFn: () => queryClient.getQueryData(queryKey),
+
       initialData,
       staleTime: Infinity,
       cacheTime: Infinity,
       enabled: false,
     });
 
-    const setState = (updater) => queryClient.setQueryData(queryKey, updater);
+    const setState = (updater) => {
+      queryClient.setQueryData(queryKey, updater);
+    };
 
     return [data, setState];
   };
@@ -48,17 +66,18 @@ export function useFavorites(targetId) {
 
 const filterKeys = {
   all: ["filters"],
-  name: () => [...filterKeys.all, "beer_name"],
+  name: () => [...filterKeys.all, "name"],
   ids: () => [...filterKeys.all, "ids"],
+  abv: () => [...filterKeys.all, "abv"],
+  srm: () => [...filterKeys.all, "srm"],
 };
+
 export function useFilters() {
   const queryKey = ["filters"];
-  const beerName = "beer_name";
   const ids = "ids";
   const initialData = {};
   const queryClient = useQueryClient();
   const { data: favoriteIds } = useFavorites(1);
-  console.log("🚀 > useFilters > favoriteIds", favoriteIds);
 
   const { data } = useQuery({
     queryKey,
@@ -68,6 +87,54 @@ export function useFilters() {
     cacheTime: Infinity,
     enabled: false,
   });
+
+  const [name, setName] = makeQueryState(filterKeys.name(), "")();
+  const getFilterName = () => name;
+  const setFilterName = (value) => {
+    setName(value);
+    const nameParam = "beer_name";
+    delete data[nameParam];
+    if (value) {
+      const result = { ...data, [nameParam]: value };
+      queryClient.setQueryData(queryKey, result);
+    }
+  };
+
+  const [abv, setAbv] = makeQueryState(filterKeys.abv(), Object.keys(abvVariants)[0])();
+  const getFilterAbv = () => abv;
+  const setFilterAbv = (value) => {
+    setAbv(value);
+    const gtParam = "abv_gt";
+    const ltParam = "abv_lt";
+    delete data[gtParam];
+    delete data[ltParam];
+    if (value !== "all") {
+      const result = {
+        ...data,
+        [gtParam]: abvVariants[value].gt,
+        [ltParam]: abvVariants[value].lt,
+      };
+      queryClient.setQueryData(queryKey, result);
+    }
+  };
+
+  const [srm, setSrm] = makeQueryState(filterKeys.srm(), Object.keys(srmVariants)[0])();
+  const getFilterSrm = () => srm;
+  const setFilterSrm = (value) => {
+    setSrm(value);
+    const gtParam = "ebc_gt";
+    const ltParam = "ebc_lt";
+    delete data[gtParam];
+    delete data[ltParam];
+    if (value !== "all") {
+      const result = {
+        ...data,
+        [gtParam]: srmVariants[value].gt,
+        [ltParam]: srmVariants[value].lt,
+      };
+      queryClient.setQueryData(queryKey, result);
+    }
+  };
 
   const getFilterFavorites = () => {
     return Boolean(data[ids]);
@@ -80,23 +147,19 @@ export function useFilters() {
     queryClient.setQueryData(queryKey, result);
   };
 
-  const getFilterName = () => {
-    if (!data[beerName]) return "";
-    return data[beerName];
-  };
-  const setFilterName = (value) => {
-    const result = (value)
-      ? { ...data, [beerName]: value }
-      : delete data[beerName];
-    queryClient.setQueryData(queryKey, result);
-  };
-
   const getFilterObject = () => data;
   return {
     getFilterName,
     setFilterName,
     getFilterObject,
+
     getFilterFavorites,
-    setFilterFavorites
+    setFilterFavorites,
+
+    getFilterAbv,
+    setFilterAbv,
+
+    getFilterSrm,
+    setFilterSrm,
   };
 }
