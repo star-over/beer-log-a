@@ -4,7 +4,7 @@ import { LongString } from "./LongString";
 
 export function BeerCard({ beer }) {
   return (
-    <li className="overflow-hidden min-w-max bg-white py-4 pr-4 shadow rounded">
+    <li className=" bg-white py-4 pr-4 shadow rounded">
       <div className="flex">
 
         <div className="mt-2 w-24 shrink-0 flex flex-col">
@@ -13,7 +13,7 @@ export function BeerCard({ beer }) {
           <BeerColor srm={beer.srm} />
         </div>
 
-        <div className="max-w-lg grow">
+        <div className="max-w-sm grow">
 
           <div className="flex justify-between items-start">
             {/* title */}

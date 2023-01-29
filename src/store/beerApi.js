@@ -20,10 +20,7 @@ export function useInfiniteBeers() {
   const { getFilterObject } = useFilters();
   const perPage = 4;
   const filters = getFilterObject();
-  const params = {
-    // abv_gt: 12,
-    per_page: perPage,
-  };
+  const params = { per_page: perPage, };
   return useInfiniteQuery({
     queryKey: beerKeys.filter(filters),
     queryFn: async ({ pageParam = 1 }) => {

@@ -12,15 +12,19 @@ export function FilterInput() {
     return () => clearTimeout(timer);
   }, [beerName]);
 
+  useEffect(() => {
+    setBeerName(getFilterName());
+  }, [getFilterName()]);
+
   return (
     <>
       <label
-        className=""
+        className="sr-only"
         htmlFor="beerName"
       >Search beer:
       </label>
       <input
-        className=""
+        className="h-8 rounded-md"
         type="text"
         name="beerName"
         id="beerName"

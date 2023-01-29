@@ -15,7 +15,7 @@ export function BeerList() {
 
   return (
     <>
-      <ul className="space-y-3 my-3">
+      <ul className="space-y-3 my-3 max-w-lg">
         {beers?.data?.pages?.flat().map((beer) => (
           <React.Fragment key={beer.id}>
             <BeerCard beer={beer} />
