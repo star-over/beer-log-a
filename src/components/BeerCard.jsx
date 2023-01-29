@@ -4,7 +4,7 @@ import { LongString } from "./LongString";
 
 export function BeerCard({ beer }) {
   return (
-    <li className=" bg-white py-4 pr-4 shadow rounded">
+    <li className="bg-white py-4 pr-4 shadow rounded">
       <div className="flex">
 
         <div className="mt-2 w-24 shrink-0 flex flex-col">
@@ -13,7 +13,7 @@ export function BeerCard({ beer }) {
           <BeerColor srm={beer.srm} />
         </div>
 
-        <div className="max-w-sm grow">
+        <div className=" grow">
 
           <div className="flex justify-between items-start">
             {/* title */}
@@ -37,7 +37,8 @@ export function BeerCard({ beer }) {
 
           {/* description */}
           <div className="mt-1 text-sm text-slate-600 font-normal leading-4">
-            <LongString content={beer.description} />
+            {beer.description}
+            {/* <LongString content={beer.description} /> */}
           </div>
 
           {/* best with */}

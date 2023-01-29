@@ -7,16 +7,16 @@ import { FilterSrm } from "./FilterSrm";
 export function Filter() {
   return (
     <form className="">
-      <fieldset className="flex gap-2 justify-between">
+      <div className="flex gap-2 justify-between">
 
         <FilterReset />
         <FilterInput />
         <FilterFavorites />
-      </fieldset>
-      <fieldset className="flex h-10 mt-2">
+      </div>
+      <div className="flex flex-col h-10 mt-2">
         <FilterAbv />
         <FilterSrm />
-      </fieldset>
+      </div>
     </form>
   );
 }
