@@ -105,7 +105,6 @@ export function useFilters() {
   const [name, setName] = makeQueryState(filterKeys.name(), "")();
   const getFilterName = () => name;
   const setFilterName = (value) => {
-    console.log("🚀 > setFilterName > value", value);
     setName(value);
     const nameParam = "beer_name";
     delete data[nameParam];

@@ -7,7 +7,7 @@ export default function Header() {
         <h1 className="text-6xl leading-relaxed font-extrabold text-transparent bg-clip-text
         bg-gradient-to-r from-amber-400 to-orange-900"
         >
-          Punk my beer
+          Punk My Beer
         </h1>
         <Filter />
       </div>
