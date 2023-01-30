@@ -66,7 +66,7 @@ export function useFavorites(targetId) {
 const filterKeys = {
   all: ["filters"],
   name: () => [...filterKeys.all, "name"],
-  checkedFav: () => [...filterKeys.all, "checkedFav"],
+  fav: () => [...filterKeys.all, "fav"],
   abv: () => [...filterKeys.all, "abv"],
   srm: () => [...filterKeys.all, "srm"],
 };
@@ -86,13 +86,13 @@ export function useFilters() {
     enabled: false,
   });
 
-  const defaultCheckedFav = false;
-  const [checkedFav, setCheckedFav] = makeQueryState(filterKeys.checkedFav(), false)();
-  const getFilterFavorites = () => checkedFav;
-  const setFilterFavorites = (value) => {
-    setCheckedFav(value);
-    const ids = "ids";
-    delete data[ids];
+  const defaultFav = false;
+  const [fav, setFav] = makeQueryState(filterKeys.fav(), false)();
+  const getFilterFav = () => fav;
+  const setFilterFav = (value) => {
+    setFav(value);
+    const idsParam = "ids";
+    delete data[idsParam];
 
     const result = (value && favoriteIds.length > 0)
       ? { ...data, ids: favoriteIds.join("|") }
@@ -153,15 +153,15 @@ export function useFilters() {
   };
 
   const resetFilter = () => {
-    setFilterFavorites(defaultCheckedFav);
+    setFilterFav(defaultFav);
     setFilterName(defaultName);
     setFilterAbv(defaultAdvKey);
     setFilterSrm(defaultSrmKey);
   };
   const getFilterObject = () => data;
   return {
-    getFilterFavorites,
-    setFilterFavorites,
+    getFilterFav,
+    setFilterFav,
 
     getFilterName,
     setFilterName,
