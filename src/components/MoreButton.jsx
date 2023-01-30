@@ -15,7 +15,7 @@ export function MoreButton({ handleMore, isFetchingNextPage, hasNextPage }) {
           type="button"
           onClick={handleMore}
         >
-          {isFetchingNextPage || <CloudArrowDownIcon className="-ml-1.5 mr-1 h-5 w-5 text-white" aria-hidden="true" />}
+          {isFetchingNextPage || <CloudArrowDownIcon className="-ml-1.5 mr-3 h-5 w-5 text-white" aria-hidden="true" />}
           <span>{status}</span>
         </button>
       </div>

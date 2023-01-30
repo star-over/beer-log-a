@@ -1,6 +1,5 @@
 import { BeerColor } from "./BeerColor";
 import { FavoriteButton } from "./FavoriteButton";
-import { LongString } from "./LongString";
 
 export function BeerCard({ beer }) {
   return (
