@@ -98,6 +98,7 @@ export function useFilters() {
       ? { ...data, ids: favoriteIds.join("|") }
       : data;
 
+    console.log("🚀 > setFilterFav > result", value, result);
     queryClient.setQueryData(queryKey, result);
   };
 

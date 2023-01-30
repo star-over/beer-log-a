@@ -5,7 +5,6 @@ import { useFilters } from "../store/queryStateApi";
 
 export function FilterFavorites() {
   const { getFilterFav, setFilterFav } = useFilters();
-  const toggleState = () => setFilterFav((prev) => !prev);
   return (
     <>
       <input
@@ -24,13 +23,13 @@ export function FilterFavorites() {
           ? (
             <IconSolid
               className="h-8 w-8 text-red-400 hover:text-red-500"
-              onClick={() => toggleState()}
+              onClick={() => setFilterFav(false)}
             />
           )
           : (
             <IconOutLine
               className="h-8 w-8  text-gray-400 hover:text-gray-500"
-              onClick={() => toggleState()}
+              onClick={() => setFilterFav(true)}
             />
           )}
       </label>

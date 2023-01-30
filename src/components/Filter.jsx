@@ -6,17 +6,17 @@ import { FilterSrm } from "./FilterSrm";
 
 export function Filter() {
   return (
-    <form className="">
+    <div className="flex flex-col gap-2 sticky top-0 bg-zinc-100 shadow-md p-2">
       <div className="flex gap-2 justify-between">
 
         <FilterReset />
         <FilterInput />
         <FilterFavorites />
       </div>
-      <div className="flex flex-col h-10 mt-2">
+      <div className="flex flex-col">
         <FilterAbv />
         <FilterSrm />
       </div>
-    </form>
+    </div>
   );
 }

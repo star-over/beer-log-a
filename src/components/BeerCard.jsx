@@ -11,6 +11,7 @@ export function BeerCard({ beer }) {
           {/* image */}
           <img className="h-24 mx-auto hover:scale-150 transition-transform" src={beer.image_url} alt={`Beer ${beer.name}`} />
           <BeerColor srm={beer.srm} />
+          <span className="text-center text-sm text-slate-500 px-2 leading-4">{`since: ${beer.first_brewed}`}</span>
         </div>
 
         <div className=" grow">
@@ -30,7 +31,6 @@ export function BeerCard({ beer }) {
               <span>ALC.: <strong className="text-base">{beer.abv}</strong>%</span>
               <span>{`IBU: ${beer.ibu}`}</span>
               <span>{`PH: ${beer.ph}`}</span>
-              <span>{`SINCE: ${beer.first_brewed}`}</span>
             </div>
             <span className="text-slate-300 text-xs">{`ID: ${beer.id}`}</span>
           </div>
