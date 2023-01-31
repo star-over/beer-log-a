@@ -21,7 +21,10 @@ export function BeerCard({ beer }) {
               <h4 className="text text-slate-600 font-bold">{beer.name}</h4>
               <p className="text-sm text-slate-500 italic">{beer.tagline}</p>
             </div>
-            <FavoriteButton beerId={beer.id} />
+            {/* heart button */}
+            <div className="w-6 h-6">
+              <FavoriteButton beerId={beer.id} />
+            </div>
           </div>
 
           {/* attributes */}
