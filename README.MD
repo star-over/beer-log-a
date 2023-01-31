@@ -8,11 +8,12 @@ Get data from server, show loading statuses, filters and mark beer as favorites 
 
 Used api https://punkapi.com/documentation/v2 🍻
 
-Used featutes: 🔥
+Used technics: 🔥
 - React
 - Tailwind
 - Tanstack query as server and local storage
 - Local storage as offline cache (1 min for training)
+- Infinite scroll
 - Github pages as hosting
 - Vite
 - Eslint

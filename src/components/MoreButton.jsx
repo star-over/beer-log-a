@@ -1,10 +1,25 @@
 import { CloudArrowDownIcon } from "@heroicons/react/20/solid";
+import { useEffect, useRef } from "react";
 
 export function MoreButton({ handleMore, isFetchingNextPage, hasNextPage }) {
+  const target = useRef(null);
+
+  const loadMode = (entries) => {
+    const [{ isIntersecting }] = entries;
+    if (isIntersecting && hasNextPage) handleMore();
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(loadMode);
+    if (target.current) observer.observe(target.current);
+
+    return () => { if (target.current) observer.observe(target.current); };
+  }, [target]);
+
   if (!hasNextPage) return null;
   const status = isFetchingNextPage ? "Loading..." : "Load more";
   return (
-    <div className="relative">
+    <div className="relative" ref={target}>
       <div className="absolute inset-0 flex items-center" aria-hidden="true">
         <div className="w-full border-t border-gray-300" />
       </div>

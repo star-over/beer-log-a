@@ -3,31 +3,29 @@ import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persist
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { persistQueryClient, PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 
-// const queryClient = new QueryClient();
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: { cacheTime: 1000 * 60 * 1 // 1 minute
-    }
-  }
-});
+const queryClient = new QueryClient();
 
-const persister = createSyncStoragePersister({
-  storage: window.localStorage,
-  key: "OFFLINE_CACHE",
-  throttleTime: 3_000,
-});
-persistQueryClient({ queryClient, persister, maxAge: Infinity });
+// const queryClient = new QueryClient({
+//   defaultOptions: {
+//     queries: { cacheTime: 1000 * 60 * 1 // 1 minute
+//     }
+//   }
+// });
+
+// const persister = createSyncStoragePersister({
+//   storage: window.localStorage,
+//   key: "OFFLINE_CACHE",
+//   throttleTime: 3_000,
+// });
+// persistQueryClient({ queryClient, persister, maxAge: Infinity });
 
 function QueryProvider({ children }) {
   return (
-    <PersistQueryClientProvider
-      client={queryClient}
-      persistOptions={{ persister }}
-    >
-      <QueryClientProvider client={queryClient}>
-        {children}
-      </QueryClientProvider>
-    </PersistQueryClientProvider>
+  // <PersistQueryClientProvider client={queryClient} persistOptions={{ persister }} >
+    <QueryClientProvider client={queryClient}>
+      {children}
+    </QueryClientProvider>
+  // </PersistQueryClientProvider>
   );
 }
 
