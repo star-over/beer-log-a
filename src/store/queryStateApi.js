@@ -38,6 +38,20 @@ function makeQueryState(queryKey, initialData) {
   };
 }
 
+export function useTheme() {
+  const queryKey = ["theme"];
+  const defaultTheme = false;
+  const themeName = "dark";
+  const [themeState, setThemeState] = makeQueryState(queryKey, defaultTheme)();
+  const getTheme = () => themeState;
+  const setTheme = (value) => {
+    setThemeState(value);
+    const root = document.querySelector("#root");
+    root.className = value ? themeName : "";
+  };
+  return { getTheme, setTheme };
+}
+
 export function useFavorites(targetId) {
   const queryKey = ["favorites"];
   const initialData = [1, 3, 5];
@@ -87,7 +101,7 @@ export function useFilters() {
   });
 
   const defaultFav = false;
-  const [fav, setFav] = makeQueryState(filterKeys.fav(), false)();
+  const [fav, setFav] = makeQueryState(filterKeys.fav(), defaultFav)();
   const getFilterFav = () => fav;
   const setFilterFav = (value) => {
     setFav(value);
@@ -98,12 +112,11 @@ export function useFilters() {
       ? { ...data, ids: favoriteIds.join("|") }
       : data;
 
-    console.log("🚀 > setFilterFav > result", value, result);
     queryClient.setQueryData(queryKey, result);
   };
 
   const defaultName = "";
-  const [name, setName] = makeQueryState(filterKeys.name(), "")();
+  const [name, setName] = makeQueryState(filterKeys.name(), defaultName)();
   const getFilterName = () => name;
   const setFilterName = (value) => {
     setName(value);
