@@ -3,14 +3,14 @@ import { FavoriteButton } from "./FavoriteButton";
 
 export function BeerCard({ beer }) {
   return (
-    <li className="bg-white py-4 pr-4 shadow rounded">
-      <div className="flex">
+    <li className="bg-slate-100 dark:bg-zinc-700 py-4 pr-4 shadow rounded">
+      <div className="flex text-slate-600 dark:text-zinc-400">
 
         <div className="mt-2 w-24 shrink-0 flex flex-col">
           {/* image */}
           <img className="h-24 mx-auto hover:scale-150 transition-transform" src={beer.image_url} alt={`Beer ${beer.name}`} />
           <BeerColor srm={beer.srm} />
-          <span className="text-center text-sm text-slate-500 px-2 leading-4">{`since: ${beer.first_brewed}`}</span>
+          <span className="text-center text-sm px-2 leading-4">{`since: ${beer.first_brewed}`}</span>
         </div>
 
         <div className=" grow">
@@ -18,8 +18,8 @@ export function BeerCard({ beer }) {
           <div className="flex justify-between items-start">
             {/* title */}
             <div>
-              <h4 className="text text-slate-600 font-bold">{beer.name}</h4>
-              <p className="text-sm text-slate-500 italic">{beer.tagline}</p>
+              <h4 className="text font-bold">{beer.name}</h4>
+              <p className="text-sm italic">{beer.tagline}</p>
             </div>
             {/* heart button */}
             <div className="w-6 h-6">
@@ -28,23 +28,23 @@ export function BeerCard({ beer }) {
           </div>
 
           {/* attributes */}
-          <div className="text-sm text-slate-600 font-normal flex items-baseline justify-between">
+          <div className="text-s font-normal flex items-baseline justify-between">
             <div className="flex items-baseline justify-start gap-2">
               <span>ALC.: <strong className="text-base">{beer.abv}</strong>%</span>
               <span>{`IBU: ${beer.ibu}`}</span>
               <span>{`PH: ${beer.ph}`}</span>
             </div>
-            <span className="text-slate-300 text-xs">{`ID: ${beer.id}`}</span>
+            <span className="text-slate-400 text-xs">{`ID: ${beer.id}`}</span>
           </div>
 
           {/* description */}
-          <div className="mt-1 text-sm text-slate-600 font-normal leading-4">
+          <div className="mt-1 text-sm font-normal leading-4">
             {beer.description}
             {/* <LongString content={beer.description} /> */}
           </div>
 
           {/* best with */}
-          <p className="mt-1 text-sm text-slate-600 font-normal">This beer goes well with:</p>
+          <p className="mt-1 text-sm font-normal">This beer goes well with:</p>
           <ul className="list-disc list-inside leading-4">
             {beer.food_pairing.map((food, i) => (
               <li key={i}>

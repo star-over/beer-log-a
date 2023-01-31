@@ -7,7 +7,7 @@ import { FilterTheme } from "./FilterTheme";
 
 export function Filter() {
   return (
-    <div className="flex flex-col sticky top-0 bg-zinc-100 shadow-md p-2">
+    <div className="flex flex-col sticky top-0 bg-zinc-100 dark:bg-zinc-700 shadow-md p-2">
       <div className="flex gap-2 justify-between items-center">
         <FilterTheme />
         <FilterReset />

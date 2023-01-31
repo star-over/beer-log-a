@@ -46,8 +46,12 @@ export function useTheme() {
   const getTheme = () => themeState;
   const setTheme = (value) => {
     setThemeState(value);
-    const root = document.querySelector("#root");
-    root.className = value ? themeName : "";
+    const el = document.body;
+    if (value) {
+      el.classList.add(themeName);
+    } else {
+      el.classList.remove(themeName);
+    }
   };
   return { getTheme, setTheme };
 }

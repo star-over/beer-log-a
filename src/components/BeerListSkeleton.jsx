@@ -2,7 +2,7 @@ import React from "react";
 
 export function BeerListSkeleton() {
   const skeleton = (
-    <li className="min-w-max bg-white p-4 shadow rounded">
+    <li className="min-w-max bg-white dark:bg-zinc-500 p-4 shadow rounded">
       <div className="flex">
 
         <div className="flex flex-col justify-start gap-4">

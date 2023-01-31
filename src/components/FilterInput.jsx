@@ -24,7 +24,7 @@ export function FilterInput() {
       >Search beer:
       </label>
       <input
-        className="h-8 w-full rounded-md"
+        className="h-8 w-full rounded-md dark:bg-zinc-400"
         type="text"
         name="beerName"
         id="beerName"
