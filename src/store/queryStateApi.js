@@ -1,4 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { makeQueryState } from "./queryStateFactory";
 
 export const abvVariants = {
   all: { content: "All", gt: 0, lt: 9999 },
@@ -18,31 +19,11 @@ export const srmVariants = {
   dark: { content: "Dark", gt: 50, lt: 9999 },
 };
 
-function makeQueryState(queryKey, initialData) {
-  return () => {
-    const queryClient = useQueryClient();
-    const { data } = useQuery({
-      queryKey,
-      queryFn: () => queryClient.getQueryData(queryKey),
-      initialData,
-      staleTime: Infinity,
-      cacheTime: Infinity,
-      enabled: false,
-    });
-
-    const setState = (updater) => {
-      queryClient.setQueryData(queryKey, updater);
-    };
-
-    return [data, setState];
-  };
-}
-
 export function useTheme() {
   const queryKey = ["theme"];
   const defaultTheme = false;
   const themeName = "dark";
-  const [themeState, setThemeState] = makeQueryState(queryKey, defaultTheme)();
+  const [themeState, setThemeState] = makeQueryState(queryKey, defaultTheme);
   const getTheme = () => themeState;
   const setTheme = (value) => {
     setThemeState(value);
@@ -105,7 +86,7 @@ export function useFilters() {
   });
 
   const defaultFav = false;
-  const [fav, setFav] = makeQueryState(filterKeys.fav(), defaultFav)();
+  const [fav, setFav] = makeQueryState(filterKeys.fav(), defaultFav);
   const getFilterFav = () => fav;
   const setFilterFav = (value) => {
     setFav(value);
@@ -120,7 +101,7 @@ export function useFilters() {
   };
 
   const defaultName = "";
-  const [name, setName] = makeQueryState(filterKeys.name(), defaultName)();
+  const [name, setName] = makeQueryState(filterKeys.name(), defaultName);
   const getFilterName = () => name;
   const setFilterName = (value) => {
     setName(value);
@@ -133,7 +114,7 @@ export function useFilters() {
   };
 
   const defaultAdvKey = Object.keys(abvVariants)[0];
-  const [abv, setAbv] = makeQueryState(filterKeys.abv(), defaultAdvKey)();
+  const [abv, setAbv] = makeQueryState(filterKeys.abv(), defaultAdvKey);
   const getFilterAbv = () => abv;
   const setFilterAbv = (value) => {
     setAbv(value);
@@ -152,7 +133,7 @@ export function useFilters() {
   };
 
   const defaultSrmKey = Object.keys(srmVariants)[0];
-  const [srm, setSrm] = makeQueryState(filterKeys.srm(), defaultSrmKey)();
+  const [srm, setSrm] = makeQueryState(filterKeys.srm(), defaultSrmKey);
   const getFilterSrm = () => srm;
   const setFilterSrm = (value) => {
     setSrm(value);
