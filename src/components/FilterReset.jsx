@@ -1,5 +1,5 @@
 import { XCircleIcon } from "@heroicons/react/24/outline";
-import { useFilters } from "../store/queryStateApi";
+import { useFilters } from "../store/filterApi";
 
 export function FilterReset() {
   const { resetFilter } = useFilters();

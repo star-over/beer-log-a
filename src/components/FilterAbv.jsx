@@ -1,4 +1,4 @@
-import { abvVariants, useFilters } from "../store/queryStateApi";
+import { abvVariants, useFilters } from "../store/filterApi";
 import { RadioBottons } from "./RadioButtons";
 
 export function FilterAbv() {

@@ -1,6 +1,6 @@
 # A training project
 Kind of pub e-menu
-Get data from server, show loading statuses, filters and mark beer as favorites ❤️
+Get data from server, show loading statuses, dark mode, filters and mark beer as favorites ❤️
 
 ## Beer-log-a  🍺
 

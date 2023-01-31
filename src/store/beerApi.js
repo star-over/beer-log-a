@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { useFilters } from "./queryStateApi";
-
+import { useFilters } from "./filterApi";
 // https://api.punkapi.com/v2/beers
 // https://api.punkapi.com/v2/beers?page=2&per_page=80
 // https://api.punkapi.com/v2/beers?brewed_before=11-2012&abv_gt=6

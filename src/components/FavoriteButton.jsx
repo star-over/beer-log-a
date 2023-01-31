@@ -1,4 +1,4 @@
-import { useFavorites } from "../store/queryStateApi";
+import { useFavorites } from "../store/favoritesApi";
 import { HeartButton } from "./HeartButton";
 
 export function FavoriteButton({ beerId }) {

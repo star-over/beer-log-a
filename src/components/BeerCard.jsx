@@ -13,7 +13,7 @@ export function BeerCard({ beer }) {
           <span className="text-center text-sm px-2 leading-4">{`since: ${beer.first_brewed}`}</span>
         </div>
 
-        <div className=" grow">
+        <div className="grow">
 
           <div className="flex justify-between items-start">
             {/* title */}

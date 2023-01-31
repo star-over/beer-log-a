@@ -1,4 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useFavorites } from "./favoritesApi";
 import { makeQueryState } from "./queryStateFactory";
 
 export const abvVariants = {
@@ -18,49 +19,6 @@ export const srmVariants = {
   brown: { content: "Brown", gt: 20, lt: 50 },
   dark: { content: "Dark", gt: 50, lt: 9999 },
 };
-
-export function useTheme() {
-  const queryKey = ["theme"];
-  const defaultTheme = false;
-  const themeName = "dark";
-  const [themeState, setThemeState] = makeQueryState(queryKey, defaultTheme);
-  const getTheme = () => themeState;
-  const setTheme = (value) => {
-    setThemeState(value);
-    const el = document.body;
-    if (value) {
-      el.classList.add(themeName);
-    } else {
-      el.classList.remove(themeName);
-    }
-  };
-  return { getTheme, setTheme };
-}
-
-export function useFavorites(targetId) {
-  const queryKey = ["favorites"];
-  const initialData = [1, 3, 5];
-  const queryClient = useQueryClient();
-  const { data } = useQuery({
-    queryKey,
-    queryFn: () => queryClient.getQueryData(queryKey),
-    initialData,
-    staleTime: Infinity,
-    cacheTime: Infinity,
-    enabled: false,
-  });
-
-  const isFavorite = data.includes(targetId);
-
-  const toggleFavorite = () => {
-    const result = isFavorite
-      ? data.filter((id) => id !== targetId)
-      : [...data, targetId];
-    queryClient.setQueryData(queryKey, result);
-  };
-
-  return { data, isFavorite, toggleFavorite };
-}
 
 const filterKeys = {
   all: ["filters"],
@@ -158,6 +116,7 @@ export function useFilters() {
     setFilterSrm(defaultSrmKey);
   };
   const getFilterObject = () => data;
+
   return {
     getFilterFav,
     setFilterFav,

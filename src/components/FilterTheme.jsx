@@ -1,4 +1,4 @@
-import { useTheme } from "../store/queryStateApi";
+import { useTheme } from "../store/themeApi";
 import { ThemeButton } from "./ThemeButton";
 
 export function FilterTheme() {

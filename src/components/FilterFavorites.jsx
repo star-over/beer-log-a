@@ -1,4 +1,4 @@
-import { useFilters } from "../store/queryStateApi";
+import { useFilters } from "../store/filterApi";
 import { HeartButton } from "./HeartButton";
 
 export function FilterFavorites() {

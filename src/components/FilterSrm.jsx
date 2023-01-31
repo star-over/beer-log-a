@@ -1,4 +1,4 @@
-import { srmVariants, useFilters } from "../store/queryStateApi";
+import { srmVariants, useFilters } from "../store/filterApi";
 import { RadioBottons } from "./RadioButtons";
 
 export function FilterSrm() {

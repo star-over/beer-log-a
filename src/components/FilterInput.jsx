@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useEffect, useState } from "react";
-import { useFilters } from "../store/queryStateApi";
+import { useFilters } from "../store/filterApi";
 
 export function FilterInput() {
   const { getFilterName, setFilterName } = useFilters();
