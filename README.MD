@@ -12,7 +12,7 @@ Used technics: 🔥
 - React
 - Tailwind
 - Tanstack query as server and local storage
-- Local storage as offline cache (1 min for training)
+- Local storage as offline cache (turned off for some reasons)
 - Infinite scroll
 - Github pages as hosting
 - Vite
