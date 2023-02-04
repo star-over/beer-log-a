@@ -8,11 +8,11 @@ export function GlobalUpdateNotification() {
   return (
     <div
       className="fixed top-0 left-0
-      ml-2 mt-2 py-1 px-2 whitespace-nowrap  font-bold bg-blue-500 rounded-full z-10
-      flex items-center
+      z-10 ml-2 mt-2 flex items-center  whitespace-nowrap rounded-full bg-blue-500 py-1
+      px-2 font-bold
       shadow-md shadow-blue-300 drop-shadow-lg"
     >
-      <div className="border-4 border-l-transparent border-white animate-spin  w-3 h-3 rounded-lg" role="status" />
+      <div className="h-3 w-3 animate-spin rounded-lg  border-4 border-white border-l-transparent" role="status" />
       <span className="ml-2 text-sm  text-white">Updating...</span>
     </div>
   );

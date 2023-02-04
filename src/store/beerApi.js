@@ -17,7 +17,7 @@ export const beerKeys = {
 
 export function useInfiniteBeers() {
   const { getFilterObject } = useFilters();
-  const perPage = 3;
+  const perPage = 80;
   const filters = getFilterObject();
   const params = { per_page: perPage, };
   return useInfiniteQuery({

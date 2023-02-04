@@ -73,7 +73,7 @@ export function BeerColor({ srm = 999999 }) {
   const style = { backgroundColor: styleRecord.bg, color: styleRecord.text };
   return (
     <div
-      className="h-10 min-w-fit m-4 rounded flex justify-center items-center cursor-default"
+      className="m-4 flex h-10 min-w-fit cursor-default items-center justify-center rounded"
       style={style}
     >
       <span className="text-xs">{`SRM: ${srm}`}</span>

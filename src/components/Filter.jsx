@@ -7,8 +7,8 @@ import { FilterTheme } from "./FilterTheme";
 
 export function Filter() {
   return (
-    <div className="flex flex-col sticky top-0 bg-zinc-100 dark:bg-zinc-700 shadow-md p-2">
-      <div className="flex gap-2 justify-between items-center">
+    <div className="sticky top-0 flex flex-col bg-zinc-100 p-2 shadow-md dark:bg-zinc-700">
+      <div className="flex items-center justify-between gap-2">
         <FilterTheme />
         <FilterReset />
         <FilterInput />

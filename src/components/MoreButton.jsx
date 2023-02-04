@@ -26,9 +26,9 @@ export function MoreButton({ handleMore, isFetchingNextPage, hasNextPage }) {
       <div className="relative flex justify-center">
         <button
           disabled={isFetchingNextPage}
-          className="inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-medium leading-5
-          disabled:bg-slate-100 disabled:text-slate-700 dark:disabled:bg-zinc-400
-          text-white dark:text-zinc-300 hover:shadow-sm bg-blue-600 hover:bg-blue-500"
+          className="inline-flex items-center rounded-full border bg-blue-600 px-4 py-1.5 text-sm font-medium
+          leading-5 text-white hover:bg-blue-500
+          hover:shadow-sm disabled:bg-slate-100 disabled:text-slate-700 dark:text-zinc-300 dark:disabled:bg-zinc-400"
           type="button"
           onClick={handleMore}
         >

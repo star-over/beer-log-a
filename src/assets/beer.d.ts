@@ -19,7 +19,6 @@ export interface Beer {
   ingredients:       Ingredients;
   food_pairing:      string[];
   brewers_tips:      string;
-  contributed_by:    ContributedBy;
 }
 
 export interface ValueUnit {
@@ -53,17 +52,17 @@ export interface Hop {
 
 export enum Attribute {
   Aroma = "aroma",
+  PurpleAroma = "Aroma",
   AromaBitter = "aroma / bitter",
   AttributeAroma = " aroma",
-  AttributeBitter = "Bitter",
-  AttributeFlavour = "Flavour",
   Bitering = "Bitering",
-  Bitter = "bitter",
   Bittering = "Bittering",
+  AttributeBitter = "Bitter",
+  Bitter = "bitter",
+  AttributeFlavour = "Flavour",
   Flavoour = "flavoour",
   Flavouor = "flavouor",
   Flavour = "flavour",
-  PurpleAroma = "Aroma",
   Twist = "twist",
   WoodAgeing = "Wood Ageing",
 }

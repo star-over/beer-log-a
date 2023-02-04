@@ -5,8 +5,15 @@ export function ThemeButton({ checked, onChange }) {
   return (
     <label>
       <input className="peer hidden" type="checkbox" checked={checked} onChange={onChange} />
-      <MoonIcon className="peer-checked:hidden  text-gray-400 hover:text-gray-500 dark:text-white cursor-pointer" aria-hidden="true" />
-      <SunIcon className="hidden peer-checked:block text-gray-400 hover:text-gray-500 dark:text-zinc-300 dark:hover:text-zinc-50 cursor-pointer" aria-hidden="true" />
+      <MoonIcon
+        className="cursor-pointer  text-gray-400 hover:text-gray-500 peer-checked:hidden dark:text-white"
+        aria-hidden="true"
+      />
+      <SunIcon
+        className="hidden cursor-pointer text-gray-400 hover:text-gray-500 peer-checked:block
+        dark:text-zinc-300 dark:hover:text-zinc-50"
+        aria-hidden="true"
+      />
     </label>
   );
 }
